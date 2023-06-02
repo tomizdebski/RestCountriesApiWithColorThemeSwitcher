@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
+body {
+  background-color: grey;
+  font-size: 14px;
+  font-family: "Nunito Sans";
+}
+
+@media (max-width: 375px) {
+  .container {
+    width: 375px;
+    height: 100vh;
+  }
+}
+.container {
+  background-color: hsl(218, 23%, 16%);
+  padding: 30px;
+}
+
+.header {
+  display: flex;
+  color: hsl(189, 41%, 97%);
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.header__name {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.header__toggle {
+  padding: 10px;
+}
+
+.tiles_container {
+  color: hsl(189, 41%, 97%);
+}
+
+.card_container {
+  background-color: hsl(218, 23%, 16%);
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.desc {
+  font-weight: 100;
+  font-size: 0.7rem;
+  padding-left: 10px;
+}
+
+.card__name {
+  padding-left: 10px;
+}
+
+.card__image {
+  width: 100%;
+  height: 50el;
+}
+
+.card {
+  min-width: 180px;
+  background-color: gray;
+  border-radius: 5px;
+  margin: 30px;
+}
+
+.card-big {
+  width: 100vh;
+  justify-content: center;
+  align-content: center;
+  padding: 30px;
+}
+
+.containerSF {
+  display: flex;
+  color: hsl(189, 41%, 97%);
+  justify-content: space-between;
+  padding: 30px;
+}
+.containerSF__input {
+  padding: 10px;
+}
+.containerSF__option {
+  padding: 10px;
+}/*# sourceMappingURL=main.css.map */
