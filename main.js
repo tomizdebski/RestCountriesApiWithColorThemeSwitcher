@@ -66,17 +66,60 @@ selectRegion.addEventListener('change', (e) => {
 });
 
 const cardContainer = document.querySelector(".card_container");
-cardContainer.addEventListener('click', (e) => {
+    cardContainer.addEventListener('click', (e) => {
     const containerSF = document.querySelector(".containerSF");
     containerSF.innerHTML = `<button class="button button-back"><- Back</button>`;
-    console.log(e.target.outerHTML);
+    
     cardContainer.innerHTML='';
     const card = document.createElement('div');
     card.className = "card-big";
-    card.innerHTML = `${e.target.outerHTML}`;
+    //card.innerHTML = `${e.target.outerHTML}`;
 
+    const countryName = e.target.childNodes[1].innerText;
+    const urlCountry = `https://restcountries.com/v3.1/name/${countryName}`;
+    fetch(urlCountry)
+    .then((request) => request.json())
+    .then(res => {
+        const lang = res[0].languages;
+        const currencies =res[0].currencies;
+        let obj = Object.entries(currencies);
+        console.log(res[0]);
+       
+        card.innerHTML = `
+        <div class="card-big__flag-container">
+            <img class="card-big__img" src="${res[0].flags.svg}" alt="flag">
+        </div>
+        <div class="card-big__desc-country">
+            
+                <div class="card-big__desc-1">
+                    <h1>${res[0].name.common}</h1>
+                    <p>Native Name: brak</p>
+                    <p>Population: ${res[0].population}</p>
+                    <p>Region: ${res[0].region}</p>
+                    <p>Sub Region: ${res[0].subregion}</p>
+                    <p>Capital: ${res[0].capital}</p>
+                    
+                </div>
+                <div class="card-big__desc-2">
+                    <p>Top LevelDomain: ${res[0].tld}</p>
+                    <p>Currencies: ${obj.map((el,index) => el[1].name)}</p>
+                    <p>Languages: ${Object.values(lang).map(el => el)}</p>
+                    <p>Border Countries: ${res[0].borders}</p>
+                </div>
+        </div>
+        `;
 
     cardContainer.appendChild(card);
+    
+    });
+
+
+    
+    const buttonBack = document.querySelector(".button-back");
+    buttonBack.addEventListener('click', (e) => {
+    console.log("back");
+    getCountry(urlApi);
+    })  
 });
 
 
